@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LionFit - Academia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-black text-white font-sans">
+
+  <!-- NAVBAR COM LOGO -->
+  <nav class="w-full bg-black/70 backdrop-blur-md fixed top-0 left-0 z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
+
+      <!-- LOGO -->
+      <div class="flex items-center">
+        <img src=".img/lion-logo.jpg"
+             alt="Logo"
+             class="h-12 w-auto object-contain">
+      </div>
+
+      <!-- BOTOES -->
+      <div class="flex items-center gap-6">
+        <button class="text-white font-semibold hover:text-yellow-400 transition">Nossas Unidades</button>
+        <button class="text-white font-semibold hover:text-yellow-400 transition">Fale Conosco</button>
+        <button class="text-white font-semibold hover:text-yellow-400 transition">Galeria</button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="h-screen bg-[url('https://images.unsplash.com/photo-1593079831268-3381b0db4a77?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center flex flex-col items-center justify-center text-center relative mt-20">
+    <div class="absolute inset-0 bg-black/70"></div>
+    <div class="relative z-10">
+      <h1 class="text-5xl md:text-7xl font-extrabold text-yellow-400">NOME DA SUA ACADEMIA</h1>
+      <p class="mt-4 text-xl md:text-2xl">Força. Disciplina. Resultados.</p>
+
+      <!-- BOTÃO DIRECIONANDO PARA WHATSAPP -->
+      <a href="https://wa.me/5513997526621" target="_blank">
+        <button class="mt-6 px-6 py-3 bg-yellow-400 text-black font-bold rounded-xl hover:bg-yellow-500 transition">
+          Comece Agora
+        </button>
+      </a>
+    </div>
+  </section>
+
+  <!-- Calculadora de Peso Ideal -->
+  <section class="py-20 bg-gray-900 text-center">
+    <h2 class="text-3xl font-bold text-yellow-400 mb-8">Calculadora de Peso Ideal</h2>
+    <div class="bg-gray-800 p-8 rounded-2xl shadow-xl max-w-md mx-auto">
+      <input type="number" id="idade" placeholder="Idade (anos)" class="w-full mb-4 p-3 rounded-lg text-black">
+      <input type="number" id="peso" placeholder="Peso (kg)" class="w-full mb-4 p-3 rounded-lg text-black">
+      <input type="number" id="altura" placeholder="Altura (cm)" class="w-full mb-4 p-3 rounded-lg text-black">
+
+      <div class="flex justify-center gap-6 mb-4">
+        <label class="flex items-center gap-2">
+          <input type="radio" name="genero" value="masculino" class="accent-yellow-400"> Masculino
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="radio" name="genero" value="feminino" class="accent-yellow-400"> Feminino
+        </label>
+      </div>
+
+      <button onclick="calcularPesoIdeal()" class="w-full bg-yellow-400 text-black font-bold py-3 rounded-lg hover:bg-yellow-500 transition">Calcular</button>
+      <div id="resultado" class="mt-6 text-lg"></div>
+    </div>
+  </section>
+
+  <!-- Serviços -->
+  <section class="py-20 bg-black text-center">
+    <h2 class="text-3xl font-bold text-yellow-400 mb-12">Nossos Serviços</h2>
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg">
+        <h3 class="text-xl font-bold mb-2">Musculação🏋🏻‍♀️</h3>
+        <p>Equipamentos modernos e ambiente motivador para evolução contínua.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg">
+        <h3 class="text-xl font-bold mb-2">Treinos Funcionais</h3>
+        <p>Desenvolva força, equilíbrio e resistência com treinos intensos.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-2xl shadow-lg">
+        <h3 class="text-xl font-bold mb-2">Acompanhamento Nutricional🍽</h3>
+        <p>Alimentar-se é cuidar do corpo e da mente" e "A saúde começa no prato</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 py-6 text-center">
+    <p class="text-gray-400">© 2025 RL - Todos os direitos reservados</p>
+  </footer>
+
+  <!-- Script da Calculadora -->
+  <script>
+    function calcularPesoIdeal() {
+      const idade = document.getElementById("idade").value;
+      const peso = parseFloat(document.getElementById("peso").value);
+      const alturaCm = parseFloat(document.getElementById("altura").value);
+      const genero = document.querySelector('input[name="genero"]:checked');
+
+      if (!idade || !peso || !alturaCm || !genero) {
+        document.getElementById("resultado").innerHTML = "Preencha todos os campos!";
+        return;
+      }
+
+      const altura = alturaCm;
+      let pesoIdeal = 0;
+
+      if (genero.value === "masculino") {
+        pesoIdeal = 52 + 0.75 * (altura - 152.4);
+      } else {
+        pesoIdeal = 52 + 0.67 * (altura - 152.4);
+      }
+
+      const pesoIdealAjustado = ((peso - pesoIdeal) * 0.25) + pesoIdeal;
+
+      let mensagem = "";
+      if (peso < pesoIdeal * 0.9) {
+        mensagem = "Sua massa corporal está abaixo do recomendado.";
+      } else if (peso > pesoIdeal * 1.1) {
+        mensagem = "Sua massa corporal está acima do ideal.";
+      } else {
+        mensagem = "Parabéns! Sua massa corporal está adequada.";
+      }
+
+      document.getElementById("resultado").innerHTML = `
+        Idade: ${idade} anos <br>
+        Peso atual: <strong>${peso} kg</strong> <br>
+        Peso ideal: <strong>${pesoIdeal.toFixed(1)} kg</strong> <br>
+        Peso ideal ajustado: <strong>${pesoIdealAjustado.toFixed(1)} kg</strong> <br>
+        <span class="text-yellow-400">${mensagem}</span>
+      `;
+    }
+  </script>
+
+</body>
+</html>
