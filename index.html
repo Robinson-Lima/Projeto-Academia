@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LionFit - Academia</title>
+  <title>Academia</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -11,20 +11,48 @@
 
   <!-- NAVBAR COM LOGO -->
   <nav class="w-full bg-black/70 backdrop-blur-md fixed top-0 left-0 z-50">
-    <div class="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
+    <div class="w-full flex items-center justify-between py-4 px-6">
 
-      <!-- LOGO -->
+      <!-- LOGO AUMENTADA E COLADA NA ESQUERDA -->
       <div class="flex items-center">
-        <img src=".img/lion-logo.jpg"
+        <img src="./img/logo-academia.jpg"
              alt="Logo"
-             class="h-12 w-auto object-contain">
+             class="h-24 w-auto object-contain"> <!-- TAMANHO AUMENTADO -->
       </div>
 
       <!-- BOTOES -->
       <div class="flex items-center gap-6">
-        <button class="text-white font-semibold hover:text-yellow-400 transition">Nossas Unidades</button>
-        <button class="text-white font-semibold hover:text-yellow-400 transition">Fale Conosco</button>
-        <button class="text-white font-semibold hover:text-yellow-400 transition">Galeria</button>
+
+        <!-- BOTÃO NOSSAS UNIDADES (dropdown) -->
+        <div class="relative group">
+          <button class="text-white font-semibold hover:text-yellow-400 transition">
+            Nossas Unidades
+          </button>
+
+          <!-- MENU DE ENDEREÇOS -->
+          <div class="absolute hidden group-hover:block bg-gray-800 text-left p-4 rounded-xl shadow-xl w-64">
+            <p class="text-yellow-400 font-bold">Unidade 1</p>
+            <p class="text-sm mb-3">
+              Rua xxxxxxxxxxxxxxx, 00002<br>
+              Itanhaém - Jd América - SP
+            </p>
+
+            <p class="text-yellow-400 font-bold">Unidade 2</p>
+            <p class="text-sm">
+              Rua yyyyyyyyyyyyyy, 5555<br>
+              Itanhaém - Gaivota - SP
+            </p>
+          </div>
+        </div>
+
+        <!-- NOSSAS PAGINAS → Instagram -->
+        <a href="https://www.instagram.com/robinson_rdl/" target="_blank"
+           class="text-white font-semibold hover:text-yellow-400 transition">
+          Nossas Páginas
+        </a>
+
+        <!-- GALERIA -->
+        <button class="text-white font-semibold hover:text-yellow-400 transition">Galeria 📷</button>
       </div>
 
     </div>
@@ -34,13 +62,13 @@
   <section class="h-screen bg-[url('https://images.unsplash.com/photo-1593079831268-3381b0db4a77?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center flex flex-col items-center justify-center text-center relative mt-20">
     <div class="absolute inset-0 bg-black/70"></div>
     <div class="relative z-10">
-      <h1 class="text-5xl md:text-7xl font-extrabold text-yellow-400">NOME DA SUA ACADEMIA</h1>
+      <h1 class="text-5xl md:text-7xl font-extrabold text-yellow-400">NOME ACADEMIA - LOGO </h1>
       <p class="mt-4 text-xl md:text-2xl">Força. Disciplina. Resultados.</p>
 
       <!-- BOTÃO DIRECIONANDO PARA WHATSAPP -->
       <a href="https://wa.me/5513997526621" target="_blank">
         <button class="mt-6 px-6 py-3 bg-yellow-400 text-black font-bold rounded-xl hover:bg-yellow-500 transition">
-          Comece Agora
+          Fale Conosco 📲
         </button>
       </a>
     </div>
@@ -73,16 +101,16 @@
     <h2 class="text-3xl font-bold text-yellow-400 mb-12">Nossos Serviços</h2>
     <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
       <div class="bg-gray-800 p-6 rounded-2xl shadow-lg">
-        <h3 class="text-xl font-bold mb-2">Musculação🏋🏻‍♀️</h3>
+        <h3 class="text-xl font-bold mb-2">Musculação💪 </h3>
         <p>Equipamentos modernos e ambiente motivador para evolução contínua.</p>
       </div>
       <div class="bg-gray-800 p-6 rounded-2xl shadow-lg">
-        <h3 class="text-xl font-bold mb-2">Treinos Funcionais</h3>
+        <h3 class="text-xl font-bold mb-2">Treinos Funcionais🏋️‍♂️</h3>
         <p>Desenvolva força, equilíbrio e resistência com treinos intensos.</p>
       </div>
       <div class="bg-gray-800 p-6 rounded-2xl shadow-lg">
         <h3 class="text-xl font-bold mb-2">Acompanhamento Nutricional🍽</h3>
-        <p>Alimentar-se é cuidar do corpo e da mente" e "A saúde começa no prato</p>
+        <p>“A saúde começa no prato”</p>
       </div>
     </div>
   </section>
@@ -92,7 +120,7 @@
     <p class="text-gray-400">© 2025 RL - Todos os direitos reservados</p>
   </footer>
 
-  <!-- Script da Calculadora -->
+  <!-- Script da calculadora -->
   <script>
     function calcularPesoIdeal() {
       const idade = document.getElementById("idade").value;
